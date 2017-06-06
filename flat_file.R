@@ -11,7 +11,7 @@ con <- dbConnect(drv,
                  dbname = "execdwhdb",
                  host = "datawarehouse-vpn.execonline.com",
                  port = 5439, user = "sysadmin",
-                 password = "aRyydpcrQ2y")
+                 password = )
 courses <- dbGetQuery(con,"SELECT * FROM execprod.dimcourse")
 survey_ans <- dbGetQuery(con,"SELECT * FROM execprod.stg_sg_survey_response WHERE sk_survey = 82")
 # get dimuser table
