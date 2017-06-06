@@ -5,6 +5,12 @@ library(reshape2)
 library(tidyr)
 library(lubridate)
 library(caret)
+library(rdrop2)
+library(httpuv)
+
+drop_auth()
+drop_acc() %>% 
+  select(uid, display_name, email_verified, quota_info.quota)
 
 drv <- dbDriver("PostgreSQL")
 con <- dbConnect(drv,
@@ -678,5 +684,8 @@ write.csv(lookup1, "lookup.csv")
 write.csv(new.names1, "question_text.csv")
 write.csv(stu_answers, "stu_answers.csv")
 
+drop_upload("lookup.csv", "/Enterprise Product Team/Enterprise Product/Flat_file")
+drop_upload("question_text.csv", "/Enterprise Product Team/Enterprise Product/Flat_file")
+drop_upload("stu_answers.csv", "/Enterprise Product Team/Enterprise Product/Flat_file")
 
 
